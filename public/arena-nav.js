@@ -1,5 +1,5 @@
 /**
- * Shared Mercantec Games navbar (Bomberman + Wizard + Tetris)
+ * Shared Mercantec Games navbar (Bomberman + Wizard + Tetris + Pong)
  * Absolute paths — works with <base href="/Tetris/">
  */
 (function () {
@@ -10,6 +10,7 @@
     /\/Bomberman/i.test(path) ? 'bomber' :
     /\/Wizard/i.test(path) ? 'wizard' :
     /\/Tetris/i.test(path) ? 'tetris' :
+    /\/Pong/i.test(path) ? 'pong' :
     /\/guide/i.test(path) ? 'guide' :
     /\/status/i.test(path) ? 'status' :
     'select';
@@ -34,6 +35,7 @@
       '<a href="/Bomberman/"' + cls('bomber') + '>BOMBER</a>' +
       '<a href="/Wizard/"' + cls('wizard') + '>WIZARD</a>' +
       '<a href="/Tetris/"' + cls('tetris') + '>TETRIS</a>' +
+      '<a href="/Pong/"' + cls('pong') + '>PONG</a>' +
     '</nav>';
 
   document.body.insertBefore(nav, document.body.firstChild);
