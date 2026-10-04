@@ -1,0 +1,8 @@
+services:
+  tetris:
+    ports:
+      - "8090:8080"
+
+networks:
+  dokploy-network:
+    external: false

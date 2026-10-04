@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Battle Tetris – Multiplayer</title>
+  <script>
+    (function () {
+      var m = location.pathname.match(/^(\/Tetris)(?=\/|$)/i);
+      if (!m) return;
+      var base = document.createElement('base');
+      base.href = m[1] + '/';
+      document.currentScript.after(base);
+      if (location.pathname === m[1]) {
+        location.replace(m[1] + '/' + location.search + location.hash);
+      }
+    })();
+  </script>
+  <link rel="stylesheet" href="style.css?v=1">
+</head>
+<body>
+  <div id="app">
+    <div id="join-screen">
+      <h1>Battle Tetris</h1>
+      <p class="tagline">Neon arcade · send skrald til modstandere</p>
+      <div class="join-form">
+        <input type="text" id="pin-input" placeholder="PIN (fx 1234)" maxlength="8" autocomplete="off">
+        <input type="text" id="name-input" placeholder="Navn (valgfri)" maxlength="20" autocomplete="off">
+        <button id="btn-join" type="button">Join spil</button>
+      </div>
+      <p id="join-error" class="join-error hidden"></p>
+      <div class="join-actions">
+        <button id="btn-create-lobby" type="button" class="btn-secondary">Opret ny lobby</button>
+        <a href="admin.html" class="admin-link">Admin</a>
+      </div>
+    </div>
+
+    <div id="game-screen" class="hidden">
+      <header class="game-header">
+        <div>
+          <h1>Battle Tetris</h1>
+          <p id="lobby-pin" class="lobby-pin"></p>
+        </div>
+        <div id="status">Forbinder…</div>
+        <div class="header-controls">
+          <button id="btn-start" type="button" disabled>Start spil</button>
+          <button id="btn-reset" type="button" disabled>Nyt spil</button>
+        </div>
+      </header>
+
+      <div class="battle-layout">
+        <aside id="opponents-panel" class="opponents-panel"></aside>
+
+        <main class="main-board">
+          <div class="side-panel hold-panel">
+            <h3>HOLD</h3>
+            <canvas id="hold-canvas" width="120" height="96"></canvas>
+          </div>
+          <div class="board-wrap">
+            <canvas id="main-canvas" width="300" height="600"></canvas>
+            <div id="overlay" class="overlay hidden">
+              <div class="overlay-box">
+                <h2 id="overlay-title">Venter</h2>
+                <p id="overlay-text"></p>
+              </div>
+            </div>
+          </div>
+          <div class="side-panel next-panel">
+            <h3>NEXT</h3>
+            <canvas id="next-canvas" width="120" height="240"></canvas>
+            <dl class="stats">
+              <div><dt>Linjer</dt><dd id="stat-lines">0</dd></div>
+              <div><dt>Level</dt><dd id="stat-level">1</dd></div>
+              <div><dt>Score</dt><dd id="stat-score">0</dd></div>
+            </dl>
+          </div>
+        </main>
+      </div>
+
+      <footer class="game-footer">
+        <p>Pil / WASD: flyt · Op / X: drej · Mellemrum: hard drop · C: hold</p>
+        <p id="player-info"></p>
+        <p class="arduino-row">
+          <button id="btn-arduino" type="button" class="btn-arduino">Forbind Arduino Oplà</button>
+          <span id="arduino-status"></span>
+        </p>
+      </footer>
+    </div>
+  </div>
+  <script src="client.js?v=1"></script>
+</body>
+</html>

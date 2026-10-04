@@ -1,0 +1,291 @@
+:root {
+  --bg: #0a0612;
+  --bg-panel: #120a1f;
+  --cyan: #00e5ff;
+  --purple: #b24bf3;
+  --pink: #ff3dac;
+  --text: #e8e0ff;
+  --muted: #8a7aa8;
+  --glow-cyan: 0 0 12px rgba(0, 229, 255, 0.55);
+  --glow-purple: 0 0 18px rgba(178, 75, 243, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(178, 75, 243, 0.18), transparent 50%),
+    radial-gradient(ellipse at 80% 100%, rgba(0, 229, 255, 0.12), transparent 45%),
+    var(--bg);
+  color: var(--text);
+}
+
+h1 {
+  margin: 0 0 0.35rem;
+  font-size: 2rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-shadow: var(--glow-purple);
+  color: var(--cyan);
+}
+
+.hidden {
+  display: none !important;
+}
+
+#join-screen {
+  max-width: 420px;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: var(--bg-panel);
+  border: 1px solid rgba(178, 75, 243, 0.35);
+  border-radius: 12px;
+  box-shadow: var(--glow-purple);
+  text-align: center;
+}
+
+.tagline {
+  color: var(--muted);
+  margin-bottom: 1.5rem;
+}
+
+.join-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.join-form input {
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 229, 255, 0.35);
+  background: #0d0818;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.join-form input:focus {
+  outline: none;
+  box-shadow: var(--glow-cyan);
+}
+
+button {
+  cursor: pointer;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  border: 1px solid var(--cyan);
+  background: linear-gradient(180deg, rgba(0, 229, 255, 0.2), rgba(178, 75, 243, 0.15));
+  color: var(--text);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+button:hover:not(:disabled) {
+  box-shadow: var(--glow-cyan);
+}
+
+button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-secondary {
+  border-color: var(--purple);
+  background: transparent;
+}
+
+.join-error {
+  color: #ff6b8a;
+  margin-top: 0.75rem;
+}
+
+.join-actions {
+  margin-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.admin-link {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+#game-screen {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem 2rem;
+}
+
+.game-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(178, 75, 243, 0.25);
+}
+
+.lobby-pin {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+#status {
+  color: var(--cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.header-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.battle-layout {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.opponents-panel {
+  flex: 0 0 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.opp-card {
+  background: var(--bg-panel);
+  border: 1px solid rgba(255, 61, 172, 0.25);
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.opp-card.dead {
+  opacity: 0.45;
+}
+
+.opp-card h4 {
+  margin: 0 0 0.35rem;
+  font-size: 0.85rem;
+  color: var(--pink);
+}
+
+.main-board {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.side-panel {
+  background: var(--bg-panel);
+  border: 1px solid rgba(0, 229, 255, 0.25);
+  border-radius: 8px;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.side-panel h3 {
+  margin: 0 0 0.35rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+
+.board-wrap {
+  position: relative;
+}
+
+canvas {
+  display: block;
+  background: #050308;
+  border: 2px solid rgba(178, 75, 243, 0.5);
+  border-radius: 4px;
+  box-shadow: var(--glow-purple);
+}
+
+#main-canvas {
+  image-rendering: pixelated;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 6, 18, 0.82);
+  border-radius: 4px;
+}
+
+.overlay-box {
+  text-align: center;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--purple);
+  border-radius: 8px;
+  box-shadow: var(--glow-purple);
+}
+
+.stats {
+  margin: 0.75rem 0 0;
+  display: grid;
+  gap: 0.35rem;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.stats div {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.stats dt {
+  color: var(--muted);
+}
+
+.stats dd {
+  margin: 0;
+  color: var(--cyan);
+}
+
+.game-footer {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.btn-arduino {
+  border-color: var(--pink);
+}
+
+#arduino-status {
+  margin-left: 0.5rem;
+  color: var(--cyan);
+}
+
+@media (max-width: 900px) {
+  .battle-layout {
+    flex-direction: column;
+  }
+
+  .opponents-panel {
+    flex-direction: row;
+    flex-wrap: wrap;
+    flex: none;
+    width: 100%;
+  }
+}
